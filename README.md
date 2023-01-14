@@ -1,1 +1,1 @@
-# TeeRex_Store
+# GeekTrust Code Challenge TeeRex_Store

@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 100px;
+    margin-top: 150px;
 }
 .productList>div{
     width: 100%;
@@ -16,12 +16,14 @@
     border-radius: 5px;
     padding: 20px 30px;
     height: 500px;
+    position: fixed;
 }
 .products{
     width: 70%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 20px;
+    margin-left: 30%;
 }
 .product{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -30,7 +32,19 @@
 }
 .product>div{
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
 }
 .productImg{
     width: 100%;
+}
+.product>div>button{
+    width: 120px;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #000;
+    color: #fff;
 }

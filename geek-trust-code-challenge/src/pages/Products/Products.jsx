@@ -28,8 +28,10 @@ export const Products = () => {
                 <img src={product.imageURL} alt={product.name} className="productImg"/>
               </div>
               <h1>{product.name}</h1>
-              <p>{product.price}</p>
-              <button>Add to cart</button>
+              <div>
+                <p>Rs {product.price}</p>
+                <button>Add to cart</button>
+              </div>
             </div>
           ))}
         </div>

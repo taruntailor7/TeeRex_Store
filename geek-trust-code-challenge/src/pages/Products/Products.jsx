@@ -1,18 +1,18 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useContext} from 'react'
 import "./Products.css"
 import { BsSearch } from 'react-icons/bs'
 import { Context } from '../../components/Context/ContextProvider';
 
 export const Products = () => {
   const {products,cartProduct,addToCart} = useContext(Context);
-  // const {filtered,}
 
-  useEffect(()=>{
-    handleAddToCart();
-  },[])
-
-  const handleAddToCart = () => {
-    // cartProduct
+  const handleAddToCart = (product) => {
+    for(let i=0;i<cartProduct.length;i++){
+        if(cartProduct[i].id===product.id){
+            return true;
+        }
+    }
+    return false;
   }
 
   const handleCart = (product) =>{
@@ -88,11 +88,13 @@ export const Products = () => {
                 <h1>{product.name}</h1>
                 <div>
                   <p>Rs {product.price}</p>
-                  <button onClick={()=>handleCart(product)}>Add to cart</button>
+                  { handleAddToCart(product) ? <>
+                    <button>-</button>
+                    <button>1</button>
+                    <button>+</button>
+                  </>: <button onClick={()=>handleCart(product)}>Add to cart</button>}
                 </div>
-                <button>-</button>
-                <button>1</button>
-                <button>+</button>
+                
               </div>
             ))}
           </div>

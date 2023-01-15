@@ -3,27 +3,33 @@
     background: #f1eff0;
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
 }
 .nav{
     width: 100%;
-    padding: 10px 40px;
+    padding: 10px 60px;
     display: flex;
     justify-content: space-between;
 }
 p{
     cursor: pointer;
 }
-.products{
+.nav>div{
     width: 9%;
     display: flex;
     align-items:center;
     justify-content: space-between;
 }
-.products>div{
+.nav>div>div{
     width:30%;
     display: flex;
     justify-content: center;
     background: #d3d3d3;
     padding: 5px;
     border-radius: 5px;
+}
+.nav>div>a,.nav>div>div>a,.nav>a{
+    text-decoration: none;
+    color: black;
 }

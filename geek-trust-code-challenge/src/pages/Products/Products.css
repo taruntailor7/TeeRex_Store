@@ -1,0 +1,36 @@
+.productList{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+.productList>div{
+    width: 100%;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.filters{
+    width: 20%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+    padding: 20px 30px;
+    height: 500px;
+}
+.products{
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.product{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    padding: 10px;
+}
+.product>div{
+    width: 100%;
+}
+.productImg{
+    width: 100%;
+}

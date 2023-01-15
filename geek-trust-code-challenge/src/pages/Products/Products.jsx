@@ -42,11 +42,6 @@ export const Products = () => {
     }
   }
 
-  const handleIncrease=(product)=>{
-     product.quan=product.quan+1;
-     console.log(product,"hello")
-     setProducts([...products,product])
-  }
   
   return (
     <>
@@ -109,7 +104,7 @@ export const Products = () => {
             </div>
           </div>
           <div className="products">
-            {data.map((product,index) =>(
+            {data.map((product) =>(
               <div key={product.id} className="product">
                 <div>
                   <img src={product.imageURL} alt={product.name} className="productImg"/>
@@ -121,7 +116,7 @@ export const Products = () => {
                    <div>
                     <button id='btnIncrease'>-</button>
                     <button id='btnIncrease'>{product.quan}</button>
-                    <button onClick={()=>handleIncrease(product)} id='btnIncrease'>+</button>
+                    <button id='btnIncrease'>+</button>
                    </div>
                   </>: <button onClick={()=>handleCart(product)}>Add to cart</button>}
                 </div>

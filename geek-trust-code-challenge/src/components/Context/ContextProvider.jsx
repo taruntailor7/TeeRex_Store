@@ -61,7 +61,7 @@ const ContextProvider = ({children})=>{
         setFilteredProduct(searchedData);
     }
 
-    return <Context.Provider value={{products,cartProduct,addToCart,filtered,filteredProduct,handleSearch,setProducts}}>{children}</Context.Provider>
+    return <Context.Provider value={{products,cartProduct,addToCart,filtered,filteredProduct,handleSearch,setProducts,setCartProduct}}>{children}</Context.Provider>
 }
 
 export default ContextProvider; 

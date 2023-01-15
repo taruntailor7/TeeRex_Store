@@ -1,8 +1,41 @@
+.searchBox{
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    justify-content: flex-end;
+}
+.searchBox>div{
+    width: 90%;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.searchBox>div>input{
+    width: 30%;
+    border:none;
+    border-bottom: 1px solid gray;
+    outline: none;
+    font-size: 15px;
+    margin-left: 300px;
+}
+.searchBox>div>button{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width: 60px;
+    height: 40px;
+    color: white;
+    background: #979292;
+    border: none;
+    border-radius: 5px;
+}
 .productList{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 150px;
+    /* margin-top: 130px; */
 }
 .productList>div{
     width: 100%;
@@ -13,10 +46,15 @@
 .filters{
     width: 20%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 5px;
-    padding: 20px 30px;
-    height: 500px;
+    border-radius: 10px;
+    padding: 0px 30px 20px 30px;
     position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+.filters>div{
+    display: flex;
+    gap: 20px;
 }
 .products{
     width: 70%;

@@ -5,7 +5,7 @@ import { BsSearch } from 'react-icons/bs'
 import { Context } from '../../components/Context/ContextProvider';
 
 export const Products = () => {
-  const {products,cartProduct,addToCart,filtered,filteredProduct,handleSearch} = useContext(Context);
+  const {products,cartProduct,addToCart,filtered,filteredProduct,handleSearch,setProducts} = useContext(Context);
   const [selectedData, setSelectedData] = useState([]);
   const [value, setValue] = useState("");
   const data = filteredProduct.length ? filteredProduct : products;
@@ -13,11 +13,12 @@ export const Products = () => {
 
   useEffect(()=>{
     filtered(selectedData);
-  },[selectedData])
+  },[selectedData,products])
 
   const handleAddToCart = (product) => {
     for(let i=0;i<cartProduct.length;i++){
         if(cartProduct[i].id===product.id){
+            product.quan=1;
             return true;
         }
     }
@@ -41,8 +42,12 @@ export const Products = () => {
     }
   }
 
+  const handleIncrease=(product)=>{
+     product.quan=product.quan+1;
+     console.log(product,"hello")
+     setProducts([...products,product])
+  }
   
-  console.log(value,"selected");
   return (
     <>
       <div className="searchBox">
@@ -104,7 +109,7 @@ export const Products = () => {
             </div>
           </div>
           <div className="products">
-            {data.map((product) =>(
+            {data.map((product,index) =>(
               <div key={product.id} className="product">
                 <div>
                   <img src={product.imageURL} alt={product.name} className="productImg"/>
@@ -115,10 +120,10 @@ export const Products = () => {
                   { handleAddToCart(product) ? <>
                    <div>
                     <button id='btnIncrease'>-</button>
-                    <button id='btnIncrease'>{product.quantity}}</button>
-                    <button  onclick={(product)=>handleIncrease(product)} id='btnIncrease'>+</button>
+                    <button id='btnIncrease'>{product.quan}</button>
+                    <button onClick={()=>handleIncrease(product)} id='btnIncrease'>+</button>
                    </div>
-                  </>: <button onclick={()=>handleCart(product)}>Add to cart</button>}
+                  </>: <button onClick={()=>handleCart(product)}>Add to cart</button>}
                 </div>
                 
               </div>

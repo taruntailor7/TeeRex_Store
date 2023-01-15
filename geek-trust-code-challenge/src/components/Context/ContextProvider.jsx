@@ -52,6 +52,8 @@ const ContextProvider = ({children})=>{
         setFilteredProduct(data)
     }
 
+    
+
     const handleSearch = (value) =>{
         let searchedData = products.filter((elem)=>{
             return elem.name.toLowerCase().includes(value.toLowerCase());
@@ -59,7 +61,7 @@ const ContextProvider = ({children})=>{
         setFilteredProduct(searchedData);
     }
 
-    return <Context.Provider value={{products,cartProduct,addToCart,filtered,filteredProduct,handleSearch}}>{children}</Context.Provider>
+    return <Context.Provider value={{products,cartProduct,addToCart,filtered,filteredProduct,handleSearch,setProducts}}>{children}</Context.Provider>
 }
 
 export default ContextProvider; 

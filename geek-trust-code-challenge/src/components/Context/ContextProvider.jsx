@@ -7,7 +7,6 @@ const ContextProvider = ({children})=>{
     const [cartProduct, setCartProduct] = useState([]);
     const [filteredProduct, setFilteredProduct] = useState([]);
     
-
     useEffect(()=>{
         getProducts();
     },[])
@@ -53,7 +52,14 @@ const ContextProvider = ({children})=>{
         setFilteredProduct(data)
     }
 
-    return <Context.Provider value={{products,cartProduct,addToCart,filtered,filteredProduct}}>{children}</Context.Provider>
+    const handleSearch = (value) =>{
+        let searchedData = products.filter((elem)=>{
+            return elem.name.toLowerCase().includes(value.toLowerCase());
+        })
+        setFilteredProduct(searchedData);
+    }
+
+    return <Context.Provider value={{products,cartProduct,addToCart,filtered,filteredProduct,handleSearch}}>{children}</Context.Provider>
 }
 
 export default ContextProvider; 

@@ -5,6 +5,7 @@
     justify-content: space-between;
     position: fixed;
     top: 0;
+    z-index: 1;
 }
 .nav{
     width: 100%;
@@ -32,4 +33,10 @@ p{
 .nav>div>a,.nav>div>div>a,.nav>a{
     text-decoration: none;
     color: black;
+}
+.count{
+    position: absolute;
+    top:-2px;
+    right: 62px;
+    font-size: 14px;
 }

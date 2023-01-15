@@ -5,9 +5,11 @@ import { BsSearch } from 'react-icons/bs'
 import { Context } from '../../components/Context/ContextProvider';
 
 export const Products = () => {
-  const {products,cartProduct,addToCart,filtered,filteredProduct} = useContext(Context);
+  const {products,cartProduct,addToCart,filtered,filteredProduct,handleSearch} = useContext(Context);
   const [selectedData, setSelectedData] = useState([]);
+  const [value, setValue] = useState("");
   const data = filteredProduct.length ? filteredProduct : products;
+
 
   useEffect(()=>{
     filtered(selectedData);
@@ -38,14 +40,15 @@ export const Products = () => {
       setSelectedData(filteredData);
     }
   }
-  console.log(selectedData,"selected");
 
+  
+  console.log(value,"selected");
   return (
     <>
       <div className="searchBox">
         <div>
-          <input placeholder='Search for products...'/>
-          <button><BsSearch fontSize="15px"/></button>
+          <input placeholder='Search for products...' name="search" value={value} onChange={(e)=>setValue(e.target.value)}/>
+          <button onClick={()=>handleSearch(value)}><BsSearch fontSize="15px"/></button>
         </div>
       </div>
       <div className="productList">
@@ -110,10 +113,12 @@ export const Products = () => {
                 <div>
                   <p>Rs {product.price}</p>
                   { handleAddToCart(product) ? <>
-                    <button>-</button>
-                    <button>1</button>
-                    <button>+</button>
-                  </>: <button onClick={()=>handleCart(product)}>Add to cart</button>}
+                   <div>
+                    <button id='btnIncrease'>-</button>
+                    <button id='btnIncrease'>{product.quantity}}</button>
+                    <button  onclick={(product)=>handleIncrease(product)} id='btnIncrease'>+</button>
+                   </div>
+                  </>: <button onclick={()=>handleCart(product)}>Add to cart</button>}
                 </div>
                 
               </div>
@@ -125,31 +130,3 @@ export const Products = () => {
   )
 }
 
-
-// color
-// : 
-// "Black"
-// currency
-// : 
-// "INR"
-// gender
-// : 
-// "Men"
-// id
-// : 
-// 1
-// imageURL
-// : 
-// "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/polo-tshirts.png"
-// name
-// : 
-// "Black Polo"
-// price
-// : 
-// 250
-// quantity
-// : 
-// 3
-// type
-// : 
-// "Polo"

@@ -17,7 +17,7 @@ export const Navbar = () => {
           <div>
             <NavLink to="/cart"><AiOutlineShoppingCart fontSize="30px" cursor="pointer"/></NavLink>
           </div>
-          <p>{cartProduct.length}</p>
+          <p className='count'>{cartProduct.length}</p>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { BsSearch } from 'react-icons/bs'
 import { Context } from '../../components/Context/ContextProvider';
 
 export const Products = () => {
-  const {products,cartProduct,addToCart,filtered,filteredProduct,handleSearch,setProducts} = useContext(Context);
+  const {products,cartProduct,addToCart,filtered,filteredProduct,handleSearch} = useContext(Context);
   const [selectedData, setSelectedData] = useState([]);
   const [value, setValue] = useState("");
   const data = filteredProduct.length ? filteredProduct : products;

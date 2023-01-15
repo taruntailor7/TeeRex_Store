@@ -34,10 +34,10 @@ const ContextProvider = ({children})=>{
                 return e;
             }
             else if(selectedValues.includes(e.gender)){
-                return e
+                return e;
             }
             else if(selectedValues.includes(e.type)){
-                return e
+                return e;
             }
             else if(selectedValues.includes("250")){
                 return e.price<=250
@@ -48,8 +48,7 @@ const ContextProvider = ({children})=>{
             else if(selectedValues.includes("450")){
                 return  e.price>=450
             }
-
-            return products;
+            return "";
         })
         setFilteredProduct(data)
     }

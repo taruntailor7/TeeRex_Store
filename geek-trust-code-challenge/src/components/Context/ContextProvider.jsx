@@ -4,7 +4,9 @@ export const Context = createContext();
 
 const ContextProvider = ({children})=>{
     const [products, setProducts] = useState([]);
-    const [cartProduct, setCartProduct] = useState([])
+    const [cartProduct, setCartProduct] = useState([]);
+    const [filteredProduct, setFilteredProduct] = useState([]);
+    
 
     useEffect(()=>{
         getProducts();
@@ -20,7 +22,39 @@ const ContextProvider = ({children})=>{
         setCartProduct([...cartProduct,product])
     }
 
-    return <Context.Provider value={{products,cartProduct,addToCart}}>{children}</Context.Provider>
+    const filtered = (selectedValues) =>{
+        let data = products.filter((e) => {
+            if(selectedValues.includes(e.color) && selectedValues.includes(e.gender) && selectedValues.includes(e.type) ){
+                return e;
+            }
+            else if(selectedValues.includes(e.color) && selectedValues.includes(e.gender) ){
+                return e;
+            }
+            else if(selectedValues.includes(e.color) ){
+                return e;
+            }
+            else if(selectedValues.includes(e.gender)){
+                return e
+            }
+            else if(selectedValues.includes(e.type)){
+                return e
+            }
+            else if(selectedValues.includes("250")){
+                return e.price<=250
+            }
+            else if(selectedValues.includes("251")){
+                return (e.price>=251 && e.price<=450)
+            }
+            else if(selectedValues.includes("450")){
+                return  e.price>=450
+            }
+
+            return products;
+        })
+        setFilteredProduct(data)
+    }
+
+    return <Context.Provider value={{products,cartProduct,addToCart,filtered,filteredProduct}}>{children}</Context.Provider>
 }
 
 export default ContextProvider; 

@@ -1,10 +1,17 @@
-import React, { useContext} from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useState} from 'react'
 import "./Products.css"
 import { BsSearch } from 'react-icons/bs'
 import { Context } from '../../components/Context/ContextProvider';
 
 export const Products = () => {
-  const {products,cartProduct,addToCart} = useContext(Context);
+  const {products,cartProduct,addToCart,filtered,filteredProduct} = useContext(Context);
+  const [selectedData, setSelectedData] = useState([]);
+  const data = filteredProduct.length ? filteredProduct : products;
+
+  useEffect(()=>{
+    filtered(selectedData);
+  },[selectedData])
 
   const handleAddToCart = (product) => {
     for(let i=0;i<cartProduct.length;i++){
@@ -19,6 +26,20 @@ export const Products = () => {
     addToCart(product);
   }
 
+
+  const handleClick = (e) => {
+    let {name,checked} = e.target;
+    if(checked){
+      setSelectedData([...selectedData,name])
+    } else{
+      let filteredData = selectedData.filter((elem)=>{
+        return elem!==name;
+      })
+      setSelectedData(filteredData);
+    }
+  }
+  console.log(selectedData,"selected");
+
   return (
     <>
       <div className="searchBox">
@@ -29,58 +50,58 @@ export const Products = () => {
       </div>
       <div className="productList">
         <div>
-          <div className="filters">
+          <div onClick={handleClick} className="filters">
             <h2>Color</h2>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Red" />
               <label htmlFor="">Red</label>
             </div>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Blue"/>
               <label htmlFor="">Blue</label>
             </div>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Green"/>
               <label htmlFor="">Green</label>
             </div>
             <h2>Gender</h2>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Men"/>
               <label htmlFor="">Men</label>
             </div>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Women"/>
               <label htmlFor="">Women</label>
             </div>
             <h2>Price</h2>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="250"/>
               <label htmlFor="">0 - Rs 250</label>
             </div>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="251"/>
               <label htmlFor="">Rs 251 - 450</label>
             </div>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="450"/>
               <label htmlFor="">Rs 450</label>
             </div>
             <h2>Type</h2>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Polo"/>
               <label htmlFor="">Polo</label>
             </div>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Hoodie"/>
               <label htmlFor="">Hoodie</label>
             </div>
             <div>
-              <input type="checkbox" />
+              <input type="checkbox" name="Basic"/>
               <label htmlFor="">Basic</label>
             </div>
           </div>
           <div className="products">
-            {products.map((product) =>(
+            {data.map((product) =>(
               <div key={product.id} className="product">
                 <div>
                   <img src={product.imageURL} alt={product.name} className="productImg"/>
